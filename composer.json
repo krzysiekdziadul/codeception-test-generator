@@ -1,0 +1,23 @@
+{
+    "name": "dziadul/codeception-tests-generator",
+    "description": "Package auto create codeception features from postman json file colletion.",
+    "type": "project",
+    "require": {
+        "ext-json": "*",
+        "codeception/module-rest": "^1.2",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "krzysztof dziadul",
+            "email": "k.dziadul@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "CodeceptionTestsGenerator\\": "src/"
+        }
+    }
+}
