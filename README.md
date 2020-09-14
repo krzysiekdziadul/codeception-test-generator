@@ -68,10 +68,10 @@ Available in ```tests/_output/collection-log.json```
 ####
 - - -
 ### Four steps to run ###
-1. [Install Codeception framework.](#markdown-header-preinstaled-and-configured-codeception-framework)
-2. [Install codeception-tests-generator package.](#markdown-header-install-codeception-tests-generator)
-3. [Setup Codecepion.](#markdown-header-setup-codeception)
-4. [Run test generator.](#markdown-header-run-test-generator)
+1.[Install Codeception framework.](#Preinstaled-and-configured-codeception-framework)
+2.[Install codeception-tests-generator package.](#Install-codeception-tests-generator)
+3.[Setup Codecepion.](#Setup-codeception)
+4.[Run test generator.](#Run-test-generator)
 
 ### Preinstaled and configured codeception framework  
 Please follow by official [Codeception](https://codeception.com/quickstart) framework guide.
