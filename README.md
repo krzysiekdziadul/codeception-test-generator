@@ -67,19 +67,19 @@ Available in ```tests/_output/collection-log.json```
 ####
 - - -
 ### Four steps to run ###
-1.[Install Codeception framework.](#Preinstaled-and-configured-codeception-framework)   
-2.[Install codeception-tests-generator package.](#Install-codeception-tests-generator)   
-3.[Setup Codecepion.](#Setup-codeception)   
-4.[Run test generator.](#Run-test-generator)   
+1. [Install Codeception framework.](#Preinstaled-and-configured-codeception-framework)   
+2. [Install codeception-tests-generator package.](#Install-codeception-tests-generator)   
+3. [Setup Codecepion.](#Setup-codeception)   
+4. [Run test generator.](#Run-test-generator)   
 
-### Preinstaled and configured codeception framework  
+### 1. Preinstaled and configured codeception framework  
 Please follow by official [Codeception](https://codeception.com/quickstart) framework guide.
 ### Required packages ###
 ```
 "codeception/module-rest": "^1.2"
 "vlucas/phpdotenv": "^3.3"
 ```
-### Install codeception-tests-generator
+### 2. Install codeception-tests-generator
 **composer.json**
 ```
   "require-dev": {
@@ -98,7 +98,7 @@ Please follow by official [Codeception](https://codeception.com/quickstart) fram
 ```
 run ```composer update```
 
-### Setup codeception
+### 3. Setup codeception
 **codeception.yml**
 ```
 bootstrap: _bootstrap.php
@@ -123,7 +123,7 @@ modules:
 HOST=example.com/
 API_KEY=1234567890
 ```
-### Run test generator
+### 4. Run test generator
 
 1. paste your's postman collection in to ```tests/_data/collection``` folder
 2. run ```php vendor/bin/codecept generate:feature```
