@@ -7,7 +7,8 @@
     "authors": [
         {
             "name": "Krzysztof Dziadul",
-            "email": "k.dziadul@gmail.com"
+            "email": "k.dziadul@gmail.com",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "dev",
