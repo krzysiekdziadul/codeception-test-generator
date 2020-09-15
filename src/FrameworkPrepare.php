@@ -43,6 +43,11 @@ class FrameworkPrepare
         return copy('./vendor/dziadul/codeception-tests-generator/src/copy/AcceptanceTesterClass.php', './tests/_support/AcceptanceTester.php');
     }
 
+    public function removeAcceptanceTester()
+    {
+        unlink('./vendor/dziadul/codeception-tests-generator/src/copy/AcceptanceTesterClass.php');
+    }
+
     public function bootstrap()
     {
         $file     = '_bootstrap.php';

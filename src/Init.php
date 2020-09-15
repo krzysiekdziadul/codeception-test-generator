@@ -14,5 +14,6 @@ class Init extends FrameworkPrepare
         $init->commandFolder();
         $init->copyCusomCommand();
         $init->bootstrap();
+        $init->removeAcceptanceTester();
     }
 }

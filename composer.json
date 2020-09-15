@@ -2,7 +2,7 @@
     "name": "dziadul/codeception-tests-generator",
     "type": "library",
     "description": "Module generate codeception tests base on postman collection.",
-    "keywords": ["codeception","gherkin","testing","test","feature","test generator"],
+    "keywords": ["codeception", "testing", "test", "gherkin", "BDD", "acceptance testing", "feature", "generator"],
     "license": "MIT",
     "authors": [
         {
