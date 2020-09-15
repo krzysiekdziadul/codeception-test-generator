@@ -118,7 +118,7 @@ modules:
         - \Helper\Acceptance
     step_decorators: ~  
 ```
-**create ```.env``` file and setup credentials**
+**create ```.env``` file locate in main project folder and setup credentials**
 ```
 HOST=example.com/
 API_KEY=1234567890
