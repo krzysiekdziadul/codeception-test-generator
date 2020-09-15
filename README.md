@@ -1,6 +1,6 @@
 # Codeception test generator #
 
-Package generates tests base on [ Postman ](https://www.postman.com/collection/) collection. Collection must be in v2.1.0 and passed [validation](#Sample-valid-collection-object)
+Package generates tests base on [ Postman ](https://www.postman.com/collection/) collection. Collection must be in v2.1.0 and passed [validation](#Sample-valid-collection-object).
 Generator supports GET, POST, PUT, DELETE method's. Script will create AcceptanceTester.php file contain step's definition. Tests saved in feature files and based on [Gherkin](https://docs.behat.org/en/v2.5/guides/1.gherkin.html) syntax.
 ####
 **Sample valid request** 
