@@ -1,5 +1,5 @@
 {
-    "name": "dziadul/codeception-tests-generator",
+    "name": "dziadul/codeception-test-generator",
     "type": "library",
     "description": "Module generate codeception tests base on postman collection.",
     "keywords": ["codeception", "testing", "test", "gherkin", "BDD", "acceptance testing", "feature", "generator"],

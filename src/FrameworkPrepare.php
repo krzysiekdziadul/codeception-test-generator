@@ -35,17 +35,17 @@ class FrameworkPrepare
 
     public function copyCusomCommand()
     {
-        return copy('./vendor/dziadul/codeception-tests-generator/src/copy/TestCreateCommand.php', './tests/_support/Command/TestCreateCommand.php');
+        return copy('./vendor/dziadul/codeception-test-generator/src/copy/TestCreateCommand.php', './tests/_support/Command/TestCreateCommand.php');
     }
 
     public function copyAcceptanceTester()
     {
-        return copy('./vendor/dziadul/codeception-tests-generator/src/copy/AcceptanceTesterClass.php', './tests/_support/AcceptanceTester.php');
+        return copy('./vendor/dziadul/codeception-test-generator/src/copy/AcceptanceTesterClass.php', './tests/_support/AcceptanceTester.php');
     }
 
     public function removeAcceptanceTester()
     {
-        unlink('./vendor/dziadul/codeception-tests-generator/src/copy/AcceptanceTesterClass.php');
+        unlink('./vendor/dziadul/codeception-test-generator/src/copy/AcceptanceTesterClass.php');
     }
 
     public function bootstrap()

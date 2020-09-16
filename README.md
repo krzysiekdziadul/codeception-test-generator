@@ -68,7 +68,7 @@ Available in ```tests/_output/collection-log.json```
 - - -
 ### Four steps to run ###
 1.[Install Codeception framework.](#1-Preinstaled-and-configured-codeception-framework)   
-2.[Install codeception-tests-generator package.](#2-Install-codeception-tests-generator)   
+2.[Install codeception-test-generator package.](#2-Install-codeception-test-generator)   
 3.[Setup Codecepion.](#3-Setup-codeception)   
 4.[Run test generator.](#4-Run-test-generator)   
 
@@ -79,11 +79,11 @@ Please follow by official [Codeception](https://codeception.com/quickstart) fram
 "codeception/module-rest": "^1.2"
 "vlucas/phpdotenv": "^3.3"
 ```
-### 2. Install codeception-tests-generator
+### 2. Install codeception-test-generator
 **composer.json**
 ```
   "require-dev": {
-    "dziadul/codeception-tests-generator": "dev-master"
+    "dziadul/codeception-test-generator": "dev-master"
   },
   "autoload": {
     "psr-4": {
