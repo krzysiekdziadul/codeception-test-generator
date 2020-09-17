@@ -9,7 +9,7 @@ use FilesystemIterator;
 trait Helper
 {
     private static $log               = 'collection-log.json';
-    private static $urlRegex          = '/^(https:\/\/{{[\w]*}}\/)([\w\d\/\-*]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-%*]*[&]{1,})*([\w]*={{[\w]*}}){0,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
+    private static $urlRegex          = '/^((http)[s]{0,1}:\/\/{{[\w]*}}\/)([\w\d\/\-*]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-%*]*[&]{1,})*([\w]*={{[\w]*}}){0,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
     private static $jaonPath          = './tests/_data/collection/';
     private static $featureName       = '/^[\sA-Za-z0-9_-]*$/';
     private static $testDirectoryPath = './tests/acceptance/';

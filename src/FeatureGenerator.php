@@ -12,9 +12,9 @@ class FeatureGenerator
     private static $httpsUrlXpath = '/[\w0-9-]+=/';
     private static $beforeQuery   = '/=+[\w0-9-]+/';
     private static $argXpath      = '/<[\w0-9-]+?>/';
-    private static $https         = '/(https:\/\/{{[\w]*}})\//';
+    private static $https         = '/((http)[s]*:\/\/{{[\w]*}})\//';
     private static $apiKey        = '/([\w]*={{[\w]*}}){0,}/';
-    private static $apiKeyXpath   = '/^(https:\/\/{{[\w]*}}\/)([\w\d\/\-*]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-%*]*[&]{1,})*([\w]*={{[\w]*}}){1,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
+    private static $apiKeyXpath   = '/^((http)[s]{0,1}:\/\/{{[\w]*}}\/)([\w\d\/\-*]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-%*]*[&]{1,})*([\w]*={{[\w]*}}){1,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
     private        $collection;
 
     public function __construct($collection)
