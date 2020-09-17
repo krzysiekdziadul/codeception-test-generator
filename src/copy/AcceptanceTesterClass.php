@@ -68,7 +68,7 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * @When /^I request url by "([^"]*)" method$$/
      */
-    public function iRequestUrlByMethod($protocol, $method)
+    public function iRequestUrlByMethod($method)
     {
 
         if (!empty($this->header)) {
@@ -77,13 +77,13 @@ class AcceptanceTester extends \Codeception\Actor
             }
         }
         $method = 'send'.$method;
-        $this->$method($protocol.'://'.$_ENV['HOST'].$this->urlGenerator());
+        $this->$method('https://'.$_ENV['HOST'].$this->urlGenerator());
     }
 
     /**
      * @When /^I request secured url by "([^"]*)" method$/
      */
-    public function iRequestSecuredUrlByMethod($protocol, $method)
+    public function iRequestSecuredUrlByMethod($method)
     {
 
         if (!empty($this->header)) {
@@ -92,7 +92,7 @@ class AcceptanceTester extends \Codeception\Actor
             }
         }
         $method = 'send'.$method;
-        $this->$method($protocol.'://'.$_ENV['HOST'] . $this->urlGenerator() . "&API_KEY=" . $_ENV['API_KEY']);
+        $this->$method('https://'.$_ENV['HOST'] . $this->urlGenerator() . "&API_KEY=" . $_ENV['API_KEY']);
     }
 
     /**
