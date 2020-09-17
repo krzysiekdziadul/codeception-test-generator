@@ -80,7 +80,7 @@ Please follow by official [Codeception](https://codeception.com/quickstart) fram
 **composer.json**
 ```
   "require-dev": {
-    "dziadul/codeception-test-generator": "^1.0"
+    "dziadul/codeception-test-generator": "~1.0"
   },
   "autoload": {
     "psr-4": {
