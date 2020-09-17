@@ -9,7 +9,7 @@ use FilesystemIterator;
 trait Helper
 {
     private static $log               = 'collection-log.json';
-    private static $urlRegex          = '/^((http)[s]{0,1}:\/\/{{[\w]*}}\/)([\w\d\/\-]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{1,})*([\w]*={{[\w]*}}){0,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
+    private static $urlRegex          = '/^((https:\/\/{{[\w]*}}\/)([\w\d\/\-]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{1,})*([\w]*={{[\w]*}}){0,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
     private static $jaonPath          = './tests/_data/collection/';
     private static $featureName       = '/^[\sA-Za-z0-9_-]*$/';
     private static $testDirectoryPath = './tests/acceptance/';
@@ -93,7 +93,7 @@ trait Helper
         fclose($file);
     }
 
-    private function feature($scenarioDescription, $params, $header, $protocol, $method)
+    private function feature($scenarioDescription, $params, $header, $method)
     {
         return [
             "Feature:"                             => "{$scenarioDescription}" . '.' . PHP_EOL .
@@ -102,8 +102,8 @@ trait Helper
             "\n  Scenario Outline:"                => "{$scenarioDescription}.",
             "\tGiven the parameters"               => "\"$params\"",
             "\tAnd"                                => "the header \"{$header}\"",
-            "\tWhen I request url"                 => "by \"{$protocol}\" protocol and \"{$method}\" method",
-            "\tWhen I request secured url"         => "by \"{$protocol}\" protocol and \"{$method}\" method",
+            "\tWhen I request url"                 => "by \"{$method}\" method",
+            "\tWhen I request secured url"         => "by \"{$method}\" method",
             "\tThen I see response status code is" => "\"200\"",
             "\n\tExamples:"                        => ''
         ];

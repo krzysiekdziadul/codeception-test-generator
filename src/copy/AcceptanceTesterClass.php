@@ -66,9 +66,9 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
-     * @When /^I request url by "([^"]*)" protocol and "([^"]*)" method$$/
+     * @When /^I request url by "([^"]*)" method$$/
      */
-    public function iRequestUrlByProtocol($protocol, $method)
+    public function iRequestUrlByMethod($protocol, $method)
     {
 
         if (!empty($this->header)) {
@@ -81,9 +81,9 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
-     * @When /^I request secured url by "([^"]*)" protocol and "([^"]*)" method$/
+     * @When /^I request secured url by "([^"]*)" method$/
      */
-    public function iRequestSecuredUrlByProtocol($protocol, $method)
+    public function iRequestSecuredUrlByMethod($protocol, $method)
     {
 
         if (!empty($this->header)) {
