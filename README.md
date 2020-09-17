@@ -13,9 +13,6 @@ https://{{host}}/v1/weather/country/GB?city=London
 ```
 https://{{host}}/v1/weather/all-country-list
 ```
-```
-http://{{host}}/v1/weather/all-country-list
-```
 #### Sample valid collection object
 
 ```
@@ -143,7 +140,7 @@ Feature: London weather.
   Scenario Outline: London weather.  
     Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city>"  
     And  the header "Accept:<Accept>"  
-    When I request url by "https" protocol and "GET" method 
+    When I request url by "GET" method 
     Then I see response status code is "200"  
 
     Examples:
@@ -162,7 +159,7 @@ Feature: London weather.
   Scenario Outline: London weather.  
     Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city> | date:<date>"  
     And  the header "Accept:<Accept>"  
-    When I request secured url by "https" protocol and "POST" method
+    When I request secured url by "POST" method
     Then I see response status code is "200"  
 
     Examples:
