@@ -44,7 +44,6 @@ class CommandExecutor extends FrameworkPrepare
                     $execute = new TestsCreator($newFilter[$input]);
                     $execute->collection;
                     $this->copyAcceptanceTester();
-                    $this->removeAcceptanceTester();
 
                     echo PHP_EOL . "\e[1;30;42m Success, total '{$this->scanDir()}' tests in acceptance folder \e[0m\n";
 
