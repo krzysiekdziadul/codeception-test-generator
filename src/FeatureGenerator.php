@@ -12,9 +12,9 @@ class FeatureGenerator
     private static $httpsUrlXpath = '/[\w0-9-]+=/';
     private static $beforeQuery   = '/=+[\w0-9-]+/';
     private static $argXpath      = '/<[\w0-9-]+?>/';
-    private static $https         = '/((http)[s]*:\/\/{{[\w]*}})\//';
+    private static $https         = '/(https:\/\/{{[\w]*}})\//';
     private static $apiKey        = '/([\w]*={{[\w]*}}){0,}/';
-    private static $apiKeyXpath   = '/^((https:\/\/{{[\w]*}}\/)([\w\d\/\-]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{1,})*([\w]*={{[\w]*}}){1,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
+    private static $apiKeyXpath   = '/^(https:\/\/{{[\w]*}}\/)([\w\d\/\-*]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-%*]*[&]{1,})*([\w]*={{[\w]*}}){1,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
     private        $collection;
 
     public function __construct($collection)
@@ -27,11 +27,10 @@ class FeatureGenerator
     {
         foreach ($this->jsonFile()['item'] as $items) {
             $httpsUrl = $items['request']['url']['raw'];
-            $protocol = $items['request']['url']['protocol'];
             $method   = $items['request']['method'];
 
-            if ($this->featureNameValidator($items['name']) !== false) {
-                if ($this->urlValidator($httpsUrl) !== false) {
+            if ($this->featureNameValidator($items['name']) !== 0) {
+                if ($this->urlValidator($httpsUrl) !== 0) {
 
                     $testName            = preg_replace('/(\W)+/','-', str_replace(' ', '-', $items['name']));
                     $scenarioDescription = ucfirst($testName);
