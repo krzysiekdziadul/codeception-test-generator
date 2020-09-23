@@ -108,7 +108,7 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function theResponseMatchesJsonSchema($schemaName)
     {
-        $schema = file_get_contents("./tests/_data/schema/{$schemaName}.json");
+        $schema = file_get_contents("./tests/_data/schema/{$schemaName}/{$schemaName}.json");
         $this->seeResponseIsValidOnJsonSchemaString($schema);
     }
 
