@@ -81,7 +81,7 @@ class FeatureGenerator
                         if ($pos !== 1) {
                             unset($template["\tWhen I request secured url"]);
                         }
-                        if (empty($schema)) {
+                        if (empty($items['response'])) {
                             unset($template["\tAnd the response matches"]);
                         }
                             foreach ($template as $key => $val) {
@@ -98,7 +98,7 @@ class FeatureGenerator
                             if ($pos !== 1) {
                                 unset($template["\tWhen I request secured url"]);
                             }
-                            if (empty($schema)) {
+                            if (empty($items['response'])) {
                                 unset($template["\tAnd the response matches"]);
                             }
                             foreach ($template as $key => $val) {
