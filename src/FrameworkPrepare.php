@@ -33,6 +33,14 @@ class FrameworkPrepare
         $this->isDir($path, $folder);
     }
 
+    public function schemaFolder()
+    {
+        $folder = 'schema';
+        $path   = '_data';
+
+        $this->isDir($path, $folder);
+    }
+
     public function copyCusomCommand()
     {
         return copy('./vendor/dziadul/codeception-test-generator/src/copy/TestCreateCommand.php', './tests/_support/Command/TestCreateCommand.php');

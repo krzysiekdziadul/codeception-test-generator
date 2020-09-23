@@ -28,6 +28,7 @@ class FeatureGenerator
         foreach ($this->jsonFile()['item'] as $items) {
             $httpsUrl = $items['request']['url']['raw'];
             $method   = $items['request']['method'];
+            $schema =  $items['response'][0]['body'];
 
             if ($this->featureNameValidator($items['name']) !== 0) {
                 if ($this->urlValidator($httpsUrl) !== 0) {
@@ -60,11 +61,15 @@ class FeatureGenerator
                     }
 
                     $params   = $this->implodeData('|', $parameters);
-                    $template = $this->feature($scenarioDescription, $params, $header, $method);
+                    $template = $this->feature($scenarioDescription, $testName, $params, $header, $method);
                     $string   = '';
 
                     $queryParameters = str_replace(':', "\t\t", preg_replace(self::$argXpath, '', $this->implodeData('|', $parameters)));
                     $pathParameters  = str_replace(':', "\t\t", preg_replace(self::$httpsUrlXpath, '', $this->implodeData('|', $explode)));
+
+                    if (!empty($schema)) {
+                        $this->saveSchema($testName, $schema);
+                    }
 
                     if (!empty($headerKey)) {
                         $headerTable   = str_replace(':', "\t\t", preg_replace(static::$argXpath, '', $this->implodeData('|', $headerKey)));
@@ -76,7 +81,10 @@ class FeatureGenerator
                         if ($pos !== 1) {
                             unset($template["\tWhen I request secured url"]);
                         }
-                        foreach ($template as $key => $val) {
+                        if (empty($schema)) {
+                            unset($template["\tAnd the response matches"]);
+                        }
+                            foreach ($template as $key => $val) {
                             $string .= "$key $val\n";
                         }
                         $string .= $tableExamples;
@@ -89,6 +97,9 @@ class FeatureGenerator
                             }
                             if ($pos !== 1) {
                                 unset($template["\tWhen I request secured url"]);
+                            }
+                            if (empty($schema)) {
+                                unset($template["\tAnd the response matches"]);
                             }
                             foreach ($template as $key => $val) {
                                 $string .= "$key $val\n";

@@ -12,6 +12,7 @@ class Init extends FrameworkPrepare
 
         $init->colectionFolder();
         $init->commandFolder();
+        $init->schemaFolder();
         $init->copyCusomCommand();
         $init->bootstrap();
     }

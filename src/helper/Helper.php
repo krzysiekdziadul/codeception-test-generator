@@ -20,6 +20,16 @@ trait Helper
         $this->save($myfile, $tableValues);
     }
 
+    private function saveSchema($testName, $schema)
+    {
+        $shcemaPath = "./tests/_data/schema/{$testName}";
+        if (is_dir($shcemaPath) !== true) {
+            mkdir($shcemaPath, 0777);
+        }
+        $schemaFile = fopen($shcemaPath . $testName . ".json", "w+");
+        $this->save($schemaFile, $schema);
+    }
+
     private function logging($store)
     {
         $data = [
@@ -93,7 +103,7 @@ trait Helper
         fclose($file);
     }
 
-    private function feature($scenarioDescription, $params, $header, $method)
+    private function feature($scenarioDescription, $testName, $params, $header, $method)
     {
         return [
             "Feature:"                             => "{$scenarioDescription}" . '.' . PHP_EOL .
@@ -105,6 +115,7 @@ trait Helper
             "\tWhen I request url"                 => "by \"{$method}\" method",
             "\tWhen I request secured url"         => "by \"{$method}\" method",
             "\tThen I see response status code is" => "\"200\"",
+            "\tAnd the response matches"           => "\"{$testName}\" json schema",
             "\n\tExamples:"                        => ''
         ];
     }

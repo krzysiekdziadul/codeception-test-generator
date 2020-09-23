@@ -103,4 +103,14 @@ class AcceptanceTester extends \Codeception\Actor
         $this->seeResponseCodeIs($code);
     }
 
+    /**
+     * @Then /^the response matches "([^"]*)" json schema$/
+     */
+    public function theResponseMatchesJsonSchema($schemaName)
+    {
+        $schema = file_get_contents("./tests/_data/schema/{$schemaName}.json");
+        $this->seeResponseIsValidOnJsonSchemaString($schema);
+    }
+
+
 }
