@@ -28,7 +28,6 @@ class FeatureGenerator
         foreach ($this->jsonFile()['item'] as $items) {
             $httpsUrl = $items['request']['url']['raw'];
             $method   = $items['request']['method'];
-            $schema =  $items['response'][0]['body'];
 
             if ($this->featureNameValidator($items['name']) !== 0) {
                 if ($this->urlValidator($httpsUrl) !== 0) {
@@ -68,6 +67,7 @@ class FeatureGenerator
                     $pathParameters  = str_replace(':', "\t\t", preg_replace(self::$httpsUrlXpath, '', $this->implodeData('|', $explode)));
 
                     if (!empty($items['response'])) {
+                        $schema = $items['response'][0]['body'];
                         $this->saveSchema($testName, $schema);
                     }
 
