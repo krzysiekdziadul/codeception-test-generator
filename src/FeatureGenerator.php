@@ -28,7 +28,10 @@ class FeatureGenerator
         foreach ($this->jsonFile()['item'] as $items) {
             $httpsUrl = $items['request']['url']['raw'];
             $method   = $items['request']['method'];
-            $schema =  $items['response'][0]['body'];
+//            $schema =  $items['response'][0]['body'];
+            foreach ($items['response'] as $schemaItem){
+                $schema = $schemaItem['body'];
+            }
 
             if ($this->featureNameValidator($items['name']) !== 0) {
                 if ($this->urlValidator($httpsUrl) !== 0) {
