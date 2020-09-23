@@ -26,8 +26,10 @@ trait Helper
         if (is_dir($shcemaPath) !== true) {
             mkdir($shcemaPath, 0777);
         }
-        $schemaFile = fopen($shcemaPath.'/'.$testName . ".json", "w+");
-        $this->save($schemaFile, $schema);
+//        $schemaFile = fopen($shcemaPath.'/'.$testName . ".json", "w+");
+        file_put_contents($shcemaPath, $testName . ".json", "w+");
+
+//        $this->save($schemaFile, $schema);
     }
 
     private function logging($store)
