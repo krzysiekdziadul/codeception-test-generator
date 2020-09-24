@@ -29,11 +29,17 @@ class FeatureGenerator
             $httpsUrl = $items['request']['url']['raw'];
             $method   = $items['request']['method'];
 
+            if (array_key_exists('description', $items['request'])) {
+                $description = $items['request']['description'];
+            } else {
+                $description = null;
+            }
+
             if ($this->featureNameValidator($items['name']) !== 0) {
                 if ($this->urlValidator($httpsUrl) !== 0) {
 
-                    $testName            = preg_replace('/(\W)+/','-', str_replace(' ', '-', $items['name']));
-                    $scenarioDescription = ucfirst($testName);
+                    $testName            = preg_replace('/(\W)+/', '-', str_replace(' ', '-', $items['name']));
+                    $featureName = ucfirst($testName);
                     $httpsUrl            = $items['request']['url']['raw'];
 
                     $headerKey   = $this->columnBy($items, 'key');
@@ -60,7 +66,7 @@ class FeatureGenerator
                     }
 
                     $params   = $this->implodeData('|', $parameters);
-                    $template = $this->feature($scenarioDescription, $testName, $params, $header, $method);
+                    $template = $this->feature($featureName, $description, $testName, $params, $header, $method);
                     $string   = '';
 
                     $queryParameters = str_replace(':', "\t\t", preg_replace(self::$argXpath, '', $this->implodeData('|', $parameters)));
@@ -84,7 +90,12 @@ class FeatureGenerator
                         if (empty($items['response'])) {
                             unset($template["\tAnd the response matches"]);
                         }
-                            foreach ($template as $key => $val) {
+                        if (!empty($description)) {
+                            unset($template["As a consumer "]);
+                        } else {
+                            unset($template[""]);
+                        }
+                        foreach ($template as $key => $val) {
                             $string .= "$key $val\n";
                         }
                         $string .= $tableExamples;
@@ -100,6 +111,11 @@ class FeatureGenerator
                             }
                             if (empty($items['response'])) {
                                 unset($template["\tAnd the response matches"]);
+                            }
+                            if (!empty($description)) {
+                                unset($template["As a consumer "]);
+                            } else {
+                                unset($template[""]);
                             }
                             foreach ($template as $key => $val) {
                                 $string .= "$key $val\n";

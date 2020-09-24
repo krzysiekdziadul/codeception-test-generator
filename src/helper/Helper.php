@@ -26,7 +26,7 @@ trait Helper
         if (is_dir($shcemaPath) !== true) {
             mkdir($shcemaPath, 0777);
         }
-        $schemaFile = fopen($shcemaPath.'/'.$testName . ".json", "w+");
+        $schemaFile = fopen($shcemaPath . '/' . $testName . ".json", "w+");
         $this->save($schemaFile, $schema);
     }
 
@@ -103,13 +103,14 @@ trait Helper
         fclose($file);
     }
 
-    private function feature($scenarioDescription, $testName, $params, $header, $method)
+    private function feature($featureName, $description, $testName, $params, $header, $method)
     {
         return [
-            "Feature:"                             => "{$scenarioDescription}" . '.' . PHP_EOL .
-                "As a consumer of the API, I want an API that provides with data about {$scenarioDescription}" . '.' . PHP_EOL .
+            "Feature:"                             => "{$featureName}" . '.',
+            ""                                     => "{$description}",
+            "As a consumer "                       => "of the API, I want an API that provides with data about {$featureName}" . '.' . PHP_EOL .
                 "So that I can use this for my application.",
-            "\n  Scenario Outline:"                => "{$scenarioDescription}.",
+            "\n  Scenario Outline:"                => "{$featureName}.",
             "\tGiven the parameters"               => "\"$params\"",
             "\tAnd"                                => "the header \"{$header}\"",
             "\tWhen I request url"                 => "by \"{$method}\" method",
