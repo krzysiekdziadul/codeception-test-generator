@@ -10,7 +10,7 @@ Generator supports GET, POST, PUT, DELETE, PATCH method's. Script overwrite Acce
 
 ## Notice ##
 Export Postman collection as 2.1.0 version.  
-For create step with json schema matches, please add `Examples` in collection and fill witch response schema.[Example](#Sample-valid-collection-object)       
+For create step with json schema matches, please add `Examples` in collection and fill witch response schema.[Example](#Sample-valid-collection-object)        
 **Use valid request url** 
 ```
 https://{{host}}/v1/weather/country/GB?city=London&date=23–03-2020&api_key={{api_key}}
