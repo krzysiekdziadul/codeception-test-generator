@@ -28,7 +28,7 @@ Please make sure, don't use special characters when named collection's.
 **Validation log** available: ```tests/_output/collection-log.json```
 ####
 - - -
-### Four steps to run ###
+## Four steps to run ##
 1.[Install Codeception framework.](#1-Preinstaled-and-configured-codeception-framework)   
 2.[Install codeception-test-generator package.](#2-Install-codeception-test-generator)   
 3.[Setup Codecepion.](#3-Setup-codeception)   
