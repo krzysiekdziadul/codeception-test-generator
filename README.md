@@ -1,57 +1,23 @@
 # Codeception test generator #
 
-Module generates tests base on [ Postman ](https://www.postman.com/collection/) collection. Collection must be in v2.1.0 and passed [validation](#Sample-valid-collection-object).
-Generator supports GET, POST, PUT, DELETE method's. Script create AcceptanceTester.php file contain step's definition. Tests saved in feature files and based on [Gherkin](https://docs.behat.org/en/v2.5/guides/1.gherkin.html) syntax.
+Module generate tests base on [ Postman ](https://www.postman.com/collection/) collection and is dedicate for Codeception framework.
+Generator supports GET, POST, PUT, DELETE, PATCH method's. Script overwrite AcceptanceTester class with a generated step's definition. Tests save in feature files and are based on [Gherkin](https://docs.behat.org/en/v2.5/guides/1.gherkin.html) syntax.
 ####
-**Sample valid request** 
+## How to start ? ##
+1.Prepare collection follow by Postman [collection guide ](https://learning.postman.com/docs/sending-requests/intro-to-collections/)     
+2.Install Codeception   
+3.Install codeception-test-generator
+
+## Notice ##
+Export Postman collection as 2.1.0 version.  
+For create step with json schema matches, please add `Examples` in collection and fill witch response schema.[Example](#Sample-valid-collection-object)       
+**Use valid request url** 
 ```
 https://{{host}}/v1/weather/country/GB?city=London&date=23–03-2020&api_key={{api_key}}
-```
-```
-https://{{host}}/v1/weather/country/GB?city=London
-```
-```
-https://{{host}}/v1/weather/all-country-list
-```
-#### Sample valid collection object
 
-```
-		{
-			"name": "Weather in London",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "https://{{host}}/v1/weather/country/GB?city=London&date=23–03-2020",
-					"protocol": "https",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"v1",
-						"weather",
-						"country",
-						"GB"
-					],
-					"query": [
-						{
-							"key": "city",
-							"value": "London"
-						},
-						{
-							"key": "date",
-							"value": "23–03-2020"
-						}
-					]
-				}
-			},
-			"response": []
-		}
+https://{{host}}/v1/weather/country/GB?city=London
+
+https://{{host}}/v1/weather/all-country-list
 ```
 **Pay atention for naming conventionse**  
 Please make sure, don't use special characters when named collection's.   
@@ -59,8 +25,7 @@ Please make sure, don't use special characters when named collection's.
 **Sample valid name**
 ```some name``` ```some_name``` ```some-name some``` ```some-name-1```  
 ###
-**Validation log**  
-Available in ```tests/_output/collection-log.json```
+**Validation log** available: ```tests/_output/collection-log.json```
 ####
 - - -
 ### Four steps to run ###
@@ -147,6 +112,26 @@ Feature: London weather.
       | path_arg1 | path_arg2 | path_arg3  | city       |  Accept           |
       | v1        | weather   | GB         | London     |  application/json |
 ```
+**Example GET method with json schema matches** 
+```
+https://{{host}}/v1/weather/country/GB?city=London    
+```
+```
+Feature: London weather.  
+  As a consumer of the API, I want an API that provides with data about London weather.
+  So that I can use this for my application.
+
+  Scenario Outline: London weather.  
+    Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city>"  
+    And  the header "Accept:<Accept>"  
+    When I request url by "GET" method 
+    Then I see response status code is "200"  
+    And the response matches "London-weather" json schema
+
+    Examples:
+      | path_arg1 | path_arg2 | path_arg3  | city       |  Accept           |
+      | v1        | weather   | GB         | London     |  application/json |
+```
 **Example POST method with api access key** 
 ```
 https://{{host}}/v1/weather/country/GB?city=London&date=23–03-2020&key={{key}}    
@@ -175,4 +160,73 @@ Given the parameters "api_version:<api_version>| api_name:<api_name> | country:<
     Examples:
       | api_version | api_name | country  | city       | date       |  Accept           |
       | v1          | weather  | GB       | London     | 23-03-2020 |  application/xml  |
+```
+#### Sample valid collection object
+
+```
+		{
+          "name": "Weather in London",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://{{host}}/v1/weather/country/GB?city=London&date=23–03-2020",
+              "protocol": "https",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "v1",
+                "weather",
+                "country",
+                "GB"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "London"
+                },
+                {
+                  "key": "date",
+                  "value": "23–03-2020"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "weather": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "main": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "icon": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
 ```
