@@ -1,6 +1,6 @@
 # Codeception test generator #
 
-Module generate tests base on [ Postman ](https://www.postman.com/collection/) collection and is dedicate for Codeception framework.
+Module generate tests base on [ Postman ](https://www.postman.com/collection/) collection and is dedicated for Codeception framework.
 Generator supports GET, POST, PUT, DELETE, PATCH method's. Script overwrite AcceptanceTester class with a generated step's definition. Tests save in feature files and are based on [Gherkin](https://docs.behat.org/en/v2.5/guides/1.gherkin.html) syntax.
 ####
 ## How to start ? ##
