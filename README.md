@@ -165,7 +165,7 @@ Given the parameters "api_version:<api_version>| api_name:<api_name> | country:<
 
 ```
 		{
-          "name": "Weather in London",
+          "name": "London weather",
           "request": {
             "method": "GET",
             "header": [
