@@ -106,18 +106,18 @@ trait Helper
     private function feature($featureName, $description, $testName, $params, $header, $method)
     {
         return [
-            "Feature:"                                    => "{$featureName}" . '.',
-            ""                                            => "{$description}",
-            "As a consumer "                              => "of the API, I want an API that provides with data about {$featureName}" . '.' . PHP_EOL .
+            "Feature:"                                         => "{$featureName}" . '.',
+            ""                                                 => "{$description}",
+            "As a consumer "                                   => "of the API, I want an API that provides with data about {$featureName}" . '.' . PHP_EOL .
                 "So that I can use this for my application.",
-            "\n  Scenario Outline:"                       => "{$featureName}.",
-            "\tGiven the parameters"                      => "\"$params\"",
-            "\tAnd"                                       => "the header \"{$header}\"",
-            "\tWhen I request \"{$featureName}\""         => "by \"{$method}\" method",
-            "\tWhen I request secured \"{$featureName}\"" => "by \"{$method}\" method",
-            "\tThen I see response status code is"        => "\"200\"",
-            "\tAnd the response matches"                  => "\"{$testName}\" json schema",
-            "\n\tExamples:"                               => ''
+            "\n  Scenario Outline:"                            => "{$featureName}.",
+            "\tGiven the parameters"                           => "\"$params\"",
+            "\tAnd"                                            => "the header \"{$header}\"",
+            "\tWhen I request url created from params"         => "by \"{$method}\" method",
+            "\tWhen I request secured url created from params" => "by \"{$method}\" method",
+            "\tThen I see response status code is"             => "\"200\"",
+            "\tAnd the response matches"                       => "\"{$testName}\" json schema",
+            "\n\tExamples:"                                    => ''
         ];
     }
 }

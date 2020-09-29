@@ -66,9 +66,9 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
-     * @When /^I request "([^"]*)" by "([^"]*)" method$$/
+     * @When /^I request url created from params by "([^"]*)" method$$/
      */
-    public function iRequestByMethod($testname, $method)
+    public function iRequestUrlCreatedFromParamsByMethod($method)
     {
 
         if (!empty($this->header)) {
@@ -81,9 +81,9 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
-     * @When /^I request secured "([^"]*)" by "([^"]*)" method$/
+     * @When /^I request secured url created from params by "([^"]*)" method$/
      */
-    public function iRequestSecuredByMethod($testname, $method)
+    public function iRequestSecuredUrlCreatedFromParamsByMethod($method)
     {
 
         if (!empty($this->header)) {
