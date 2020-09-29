@@ -68,7 +68,7 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * @When /^I request "([^"]*)" by "([^"]*)" method$$/
      */
-    public function iRequestUrlByMethod($testname, $method)
+    public function iRequestByMethod($testname, $method)
     {
 
         if (!empty($this->header)) {
@@ -83,7 +83,7 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * @When /^I request secured "([^"]*)" by "([^"]*)" method$/
      */
-    public function iRequestSecuredUrlByMethod($testname, $method)
+    public function iRequestSecuredByMethod($testname, $method)
     {
 
         if (!empty($this->header)) {
