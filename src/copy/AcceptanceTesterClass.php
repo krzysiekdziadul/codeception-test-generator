@@ -66,7 +66,7 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
-     * @When /^I request "([^"]*)" by "([^"]*)" method$$/
+     * @When /^I request ([^"]*) by "([^"]*)" method$$/
      */
     public function iRequestUrlByMethod($method)
     {
@@ -81,7 +81,7 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
-     * @When /^I request secured "([^"]*)" by "([^"]*)" method$/
+     * @When /^I request secured ([^"]*) by "([^"]*)" method$/
      */
     public function iRequestSecuredUrlByMethod($method)
     {

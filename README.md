@@ -105,7 +105,7 @@ Feature: London weather.
   Scenario Outline: London weather.  
     Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city>"  
     And  the header "Accept:<Accept>"  
-    When I request url by "GET" method 
+    When I request London weather by "GET" method 
     Then I see response status code is "200"  
 
     Examples:
@@ -124,7 +124,7 @@ Feature: London weather.
   Scenario Outline: London weather.  
     Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city>"  
     And  the header "Accept:<Accept>"  
-    When I request url by "GET" method 
+    When I request London weather by "GET" method 
     Then I see response status code is "200"  
     And the response matches "London-weather" json schema
 
@@ -144,7 +144,7 @@ Feature: London weather.
   Scenario Outline: London weather.  
     Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city> | date:<date>"  
     And  the header "Accept:<Accept>"  
-    When I request secured url by "POST" method
+    When I request secured London weather by "POST" method
     Then I see response status code is "200"  
 
     Examples:
@@ -165,7 +165,7 @@ Given the parameters "api_version:<api_version>| api_name:<api_name> | country:<
 
 ```
 		{
-          "name": "Weather in London",
+          "name": "London weather",
           "request": {
             "method": "GET",
             "header": [
