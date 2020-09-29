@@ -68,7 +68,7 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * @When /^I request ([^"]*) by "([^"]*)" method$$/
      */
-    public function iRequestUrlByMethod($method)
+    public function iRequestUrlByMethod($testname, $method)
     {
 
         if (!empty($this->header)) {
@@ -76,14 +76,14 @@ class AcceptanceTester extends \Codeception\Actor
                 $this->haveHttpHeader("{$key}", "{$value}");
             }
         }
-        $method = 'send'.$method;
-        $this->$method($_ENV['HOST'].$this->urlGenerator());
+        $method = 'send' . $method;
+        $this->$method($_ENV['HOST'] . $this->urlGenerator());
     }
 
     /**
      * @When /^I request secured ([^"]*) by "([^"]*)" method$/
      */
-    public function iRequestSecuredUrlByMethod($method)
+    public function iRequestSecuredUrlByMethod($testname, $method)
     {
 
         if (!empty($this->header)) {
@@ -91,7 +91,7 @@ class AcceptanceTester extends \Codeception\Actor
                 $this->haveHttpHeader("{$key}", "{$value}");
             }
         }
-        $method = 'send'.$method;
+        $method = 'send' . $method;
         $this->$method($_ENV['HOST'] . $this->urlGenerator() . "&API_KEY=" . $_ENV['API_KEY']);
     }
 
