@@ -1,6 +1,9 @@
 ## CHANGELOG
 ## codeception-test-generator
 
+### 1.0.2
+- step change: When I request ... - add "created from params"
+
 ### 1.0.1
 - add json schema matches
 - add custom collection description
