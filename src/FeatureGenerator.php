@@ -82,10 +82,10 @@ class FeatureGenerator
                         $tableExamples = "\t| " . $queryParameters . " |" . $headerTable . " |" . PHP_EOL . "\t| " . $pathParameters . " |" . $this->implodeData('|',
                                 $headerValue) . " |";
                         if ($pos === 1) {
-                            unset($template["\tWhen I request url"]);
+                            unset($template["\tWhen I request {$featureName}"]);
                         }
                         if ($pos !== 1) {
-                            unset($template["\tWhen I request secured url"]);
+                            unset($template["\tWhen I request secured {$featureName}"]);
                         }
                         if (empty($items['response'])) {
                             unset($template["\tAnd the response matches"]);
@@ -104,10 +104,10 @@ class FeatureGenerator
                             $tableExamples = "\t| " . $queryParameters . " |" . PHP_EOL . "\t| " . $pathParameters . " |";
                             unset($template["\tAnd"]);
                             if ($pos === 1) {
-                                unset($template["\tWhen I request url"]);
+                                unset($template["\tWhen I request {$featureName}"]);
                             }
                             if ($pos !== 1) {
-                                unset($template["\tWhen I request secured url"]);
+                                unset($template["\tWhen I request secured {$featureName}"]);
                             }
                             if (empty($items['response'])) {
                                 unset($template["\tAnd the response matches"]);
