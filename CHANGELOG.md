@@ -1,6 +1,9 @@
 ## CHANGELOG
 ## codeception-test-generator
 
+### 1.0.3
+- change custom command to: generate:feature-test
+
 ### 1.0.2
 - step change: When I request ... - add "created from params"
 
