@@ -23,7 +23,7 @@ class TestCreateCommand extends Command implements CustomCommandInterface
      */
     public static function getCommandName()
     {
-        return "generate:feature";
+        return "generate:feature-test";
     }
 
     /**

@@ -88,7 +88,7 @@ API_KEY=1234567890
 ### 4. Run test generator
 
 1. paste your's postman collection in to ```tests/_data/collection``` folder
-2. run ```php vendor/bin/codecept generate:feature```
+2. run ```php vendor/bin/codecept generate:feature-test```
 3. run ```php vendor/bin/codecept run acceptance```  
 ###
 - - -  
