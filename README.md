@@ -103,13 +103,13 @@ Feature: London weather.
   So that I can use this for my application.
 
   Scenario Outline: London weather.  
-    Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city>"  
+    Given the parameters "path_arg1:<value1>| path_arg2:<value2> | path_arg3:<value3> | city:<city>"  
     And  the header "Accept:<Accept>"  
     When I request url created from params by "GET" method 
     Then I see response status code is "200"  
 
     Examples:
-      | path_arg1 | path_arg2 | path_arg3  | city       |  Accept           |
+      | value1    | value2    | value3     | city       |  Accept           |
       | v1        | weather   | GB         | London     |  application/json |
 ```
 **Example GET method with json schema matches** 
@@ -122,14 +122,14 @@ Feature: London weather.
   So that I can use this for my application.
 
   Scenario Outline: London weather.  
-    Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city>"  
+    Given the parameters "path_arg1:<value1>| path_arg2:<value2> | path_arg3:<value3> | city:<city>"  
     And  the header "Accept:<Accept>"  
     When I request url created from params by "GET" method 
     Then I see response status code is "200"  
     And the response matches "London-weather" json schema
 
     Examples:
-      | path_arg1 | path_arg2 | path_arg3  | city       |  Accept           |
+      | value1    | value2    | value3     | city       |  Accept           |
       | v1        | weather   | GB         | London     |  application/json |
 ```
 **Example POST method with api access key** 
@@ -142,18 +142,18 @@ Feature: London weather.
   So that I can use this for my application.
 
   Scenario Outline: London weather.  
-    Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city> | date:<date>"  
+    Given the parameters "path_arg1:<value1>| path_arg2:<value2> | path_arg3:<value3> | city:<city> | date:<date>"  
     And  the header "Accept:<Accept>"  
     When I request secured url created from params by "POST" method
     Then I see response status code is "200"  
 
     Examples:
-      | path_arg1 | path_arg2 | path_arg3  | city       | date       |  Accept           |
+      | value1    | value2    | value3     | city       | date       |  Accept           |
       | v1        | weather   | GB         | London     | 23-03-2020 |  application/xml  |
 ```
-**Feel free to change ```path_arg*``` name**  
+**Feel free to change ```value*``` name**  
 ```    
-Given the parameters "api_version:<api_version>| api_name:<api_name> | country:<country> | city:<city> | date:<date>"  
+Given the parameters "path_arg1:<api_version>| path_arg2:<api_name> | country:<country> | city:<city> | date:<date>"  
 ```  
 ```
 

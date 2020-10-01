@@ -1,6 +1,9 @@
 ## CHANGELOG
 ## codeception-test-generator
 
+### 1.0.4
+- bug fix - rename path argument to <value*>
+
 ### 1.0.3
 - change custom command to: generate:feature-test
 

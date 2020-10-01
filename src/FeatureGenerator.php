@@ -12,6 +12,7 @@ class FeatureGenerator
     private static $httpsUrlXpath = '/[\w0-9-]+=/';
     private static $beforeQuery   = '/=+[\w0-9-]+/';
     private static $argXpath      = '/<[\w0-9-]+?>/';
+    private static $queryArgXpath = '/([\w\d\/\-])+[:]/';
     private static $https         = '/((http)[s]*:\/\/{{[\w]*}})\//';
     private static $apiKey        = '/([\w]*={{[\w]*}}){0,}/';
     private static $apiKeyXpath   = '/^((http)[s]{0,1}:\/\/{{[\w]*}}\/)([\w\d\/\-*]+[?]{0,})[&]{0,}([\w\d\-]*[=]{1}[\w\d\-%*]*[&]{1,})*([\w]*={{[\w]*}}){1,}[&]{0,}([\w\d\-]*[=]{1}[\w\d\-]*[&]{0,})*$/';
@@ -38,9 +39,9 @@ class FeatureGenerator
             if ($this->featureNameValidator($items['name']) !== 0) {
                 if ($this->urlValidator($httpsUrl) !== 0) {
 
-                    $testName            = preg_replace('/(\W)+/', '-', str_replace(' ', '-', $items['name']));
+                    $testName    = preg_replace('/(\W)+/', '-', str_replace(' ', '-', $items['name']));
                     $featureName = ucfirst($testName);
-                    $httpsUrl            = $items['request']['url']['raw'];
+                    $httpsUrl    = $items['request']['url']['raw'];
 
                     $headerKey   = $this->columnBy($items, 'key');
                     $headerValue = $this->columnBy($items, 'value');
@@ -61,7 +62,7 @@ class FeatureGenerator
                             $beforeValue  = preg_replace(self::$beforeQuery, '', $value);
                             $parameters[] = $beforeValue . ':<' . $beforeValue . '>';
                         } else {
-                            $parameters[] = 'path_arg' . $key . ':<path_arg' . $key . '>';
+                            $parameters[] = 'path_arg' . $key . ':<value' . $key . '>';
                         }
                     }
 
@@ -69,7 +70,7 @@ class FeatureGenerator
                     $template = $this->feature($featureName, $description, $testName, $params, $header, $method);
                     $string   = '';
 
-                    $queryParameters = str_replace(':', "\t\t", preg_replace(self::$argXpath, '', $this->implodeData('|', $parameters)));
+                    $queryParameters = str_replace(['<', '>'], '', preg_replace(self::$queryArgXpath, '', $this->implodeData('|', $parameters)));
                     $pathParameters  = str_replace(':', "\t\t", preg_replace(self::$httpsUrlXpath, '', $this->implodeData('|', $explode)));
 
                     if (!empty($items['response'])) {
