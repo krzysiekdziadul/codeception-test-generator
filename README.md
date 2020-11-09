@@ -83,7 +83,7 @@ modules:
 **create ```.env``` file, locate it in main project folder and setup credentials**
 ```
 HOST=https://example.com/
-API_KEY=1234567890
+KEY=SOME_KEY=1234567890
 ```
 ### 4. Run test generator
 

@@ -92,7 +92,7 @@ class AcceptanceTester extends \Codeception\Actor
             }
         }
         $method = 'send' . $method;
-        $this->$method($_ENV['HOST'] . $this->urlGenerator() . "&API_KEY=" . $_ENV['API_KEY']);
+        $this->$method($_ENV['HOST'] . $this->urlGenerator() . "&" . $_ENV['KEY']);
     }
 
     /**

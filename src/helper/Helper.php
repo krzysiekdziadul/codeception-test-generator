@@ -3,7 +3,6 @@
 
 namespace CodeceptionTestsGenerator\helper;
 
-
 use FilesystemIterator;
 
 trait Helper
@@ -103,7 +102,7 @@ trait Helper
         fclose($file);
     }
 
-    private function feature($featureName, $description, $testName, $params, $header, $method)
+    private function feature($featureName, $description, $testName, $params, $header, $method, $code)
     {
         return [
             "Feature:"                                         => "{$featureName}" . '.',
@@ -115,9 +114,57 @@ trait Helper
             "\tAnd"                                            => "the header \"{$header}\"",
             "\tWhen I request url created from params"         => "by \"{$method}\" method",
             "\tWhen I request secured url created from params" => "by \"{$method}\" method",
-            "\tThen I see response status code is"             => "\"200\"",
+            "\tThen I see response status code is"             => "\"{$code}\"",
             "\tAnd the response matches"                       => "\"{$testName}\" json schema",
             "\n\tExamples:"                                    => ''
         ];
+    }
+
+    private function responseValidationExamples($validateBody, $validationCode, $headerValue, $template, $featureName, $string, $queryParameters, $headerTable)
+    {
+        for ($i = 0; $i <= count($validateBody) - 1; $i++) {
+
+            foreach ($validateBody[$i]['url'] as $value) {
+                $validation = '';
+                $explode    = explode(' ',
+                    rtrim(str_replace(['/', '?', '&'], ' ', preg_replace([self::$https, self::$apiKey], '', $value)), ' '));
+                $pathParameters = str_replace(':', "\t\t",
+                    preg_replace(self::$httpsUrlXpath, '', $this->implodeData('|', $explode)));
+                $collection[]   = $pathParameters;
+            }
+
+            foreach ($collection as $tableData) {
+                $tableExamples = "\t| " . $tableData . " |" . $this->implodeData('|',
+                        $headerValue) . " |" . PHP_EOL;
+                $validation    .= $tableExamples;
+                unset($collection);
+            }
+            unset($template["Feature:"]);
+            unset($template[""]);
+            unset($template["\tAnd the response matches"]);
+            $template["\n  Scenario Outline:"]                = "{$featureName} - {$validationCode[$i]} validation.";
+            $template["\tThen I see response status code is"] = "\"{$validationCode[$i]}\"";
+
+            foreach ($template as $key => $val) {
+                $string .= "$key $val\n";
+            }
+
+            $tableExamples = "\t| " . $queryParameters . " |" . $headerTable . " |" . PHP_EOL;
+            $string        .= $tableExamples . $validation;
+        }
+
+        return $string;
+    }
+
+    private function templateLoop($template, $tableExamples)
+    {
+        $string = '';
+
+        foreach ($template as $key => $val) {
+            $string .= "$key $val\n";
+        }
+        $string .= $tableExamples . PHP_EOL;
+
+        return $string;
     }
 }
