@@ -154,6 +154,7 @@ Feature: London weather.
 ## Upgrade Feature by validation example #
 
 You can also add response validation rules by [specifying postman collection examples](https://learning.postman.com/docs/sending-requests/examples/) each feature.
+####
 **How it is work ?** 
 
 1. Open saved request from collection
