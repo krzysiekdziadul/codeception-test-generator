@@ -151,6 +151,65 @@ Feature: London weather.
       | path_arg1 | path_arg2 | path_arg3  | city       | date       |  Accept           |
       | v1        | weather   | GB         | London     | 23-03-2020 |  application/xml  |
 ```
+## Upgrade Feature by validation example #
+
+You can also add response validation rules by [specifying postman collection examples](https://learning.postman.com/docs/sending-requests/examples/) each feature.
+**How it is work ?** 
+
+1. Open saved request from collection
+2. Press ```Examples``` on right corner Postman tool
+3. Press ```Add Examples```
+4. On Body section paste requests validation roles eg.
+
+```
+{
+      "url": [
+        "https://{{host}}/v1/weatherxx/country/GB?city=London&key={{key}}",
+        "https://{{host}}/v1/weather/country/xx?city=London&key={{key}}",
+        "https://{{host}}/v1/weather/country/GB?city=yyyy&key={{key}}"
+      ]
+}
+```
+5. Name it eg ```validation 404``` and save
+
+**Pay atention for naming conventionse**  
+Please make sure, use ```validation``` + empty space + ```code```.
+
+**Example GET method with json schema matches and validation with api access key**
+
+```
+https://{{host}}/v1/weather/country/GB?city=London&key={{key}}    
+```
+```
+Feature: London weather.  
+  As a consumer of the API, I want an API that provides with data about London weather.
+  So that I can use this for my application.
+
+  Scenario Outline: London weather.  
+    Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city>"  
+    And  the header "Accept:<Accept>"  
+    When I request url created from params by "GET" method 
+    Then I see response status code is "200"  
+    And the response matches "London-weather" json schema
+
+    Examples:
+      | path_arg1 | path_arg2 | path_arg3  | city       |  Accept           |
+      | v1        | weather   | GB         | London     |  application/json |
+
+  Scenario Outline: London weather - 404 validation.  
+    Given the parameters "path_arg1:<path_arg1>| path_arg2:<path_arg2> | path_arg3:<path_arg3> | city:<city>"  
+    And  the header "Accept:<Accept>"  
+    When I request url created from params by "GET" method 
+    Then I see response status code is "404"  
+
+    Examples:
+      | path_arg1 | path_arg2 | path_arg3  | city       |  Accept           |
+      | v1        | weatherxx | GB         | London     |  application/json |
+      | v1        | weather   | xx         | xx         |  application/json |
+      | v1        | weather   | GB         | yyyy       |  application/json |
+```
+
+
 **Feel free to change ```path_arg*``` name**  
 ```    
 Given the parameters "api_version:<api_version>| api_name:<api_name> | country:<country> | city:<city> | date:<date>"  
@@ -164,7 +223,7 @@ Given the parameters "api_version:<api_version>| api_name:<api_name> | country:<
 #### Sample valid collection object
 
 ```
-		{
+{
           "name": "London weather",
           "request": {
             "method": "GET",
