@@ -18,7 +18,7 @@ class CommandExecutor extends FrameworkPrepare
 
             $values[] = array_values($files);
 
-            echo PHP_EOL . "\e[4;31mFile AcceptanceTester.php will be overwritten.\e[0m\nSelect file or exit \n";
+            echo PHP_EOL . "\e[4;31m WARNING: File AcceptanceTester.php will be overwritten.\e[0m\nSelect file or exit \n";
 
             foreach ($values as $value) {
                 $filter = array_filter(array_merge(array(0), $value));
@@ -45,14 +45,14 @@ class CommandExecutor extends FrameworkPrepare
                     $execute->collection;
                     $this->copyAcceptanceTester();
 
-                    echo PHP_EOL . "\e[1;30;42m Success, total '{$this->scanDir()}' tests in acceptance folder \e[0m\n";
+                    echo PHP_EOL . "\e[1;30;42m Success, total '{$this->scanDir()}' test in acceptance folder \e[0m\n";
 
                 } else {
-                    echo PHP_EOL . "\e[1;30;41m Selected number '{$input}' not exist's \e[0m\n";
+                    echo PHP_EOL . "\e[1;30;41m Selected number '{$input}' not exist \e[0m\n";
                 }
             }
         } else {
-            echo PHP_EOL . "\e[1;30;41m No json file's in Postman folder founded \e[0m\n";
+            echo PHP_EOL . "\e[1;30;41m Files does not exist in Postman folder \e[0m\n";
         }
     }
 }
