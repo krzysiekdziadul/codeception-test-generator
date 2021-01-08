@@ -56,15 +56,15 @@ trait Helper
                 if (in_array('v2.1.0', explode('/', $schema['info']['schema']))) {
                     $this->creator();
                 } else {
-                    echo "\e[1;30;41m Bad postman collection version. \e[0m\n";
+                    echo "\e[1;30;41m Wrong postman collection version. Required v2.1 \e[0m\n";
                     exit;
                 }
             } else {
-                echo "\e[1;30;41m No file or file content \e[0m\n";
+                echo "\e[1;30;41m File does not exist or wrong file content \e[0m\n";
                 exit;
             }
         } else {
-            echo "\e[1;30;41m No file exist \e[0m\n";
+            echo "\e[1;30;41m File does not exist \e[0m\n";
             exit;
         }
     }

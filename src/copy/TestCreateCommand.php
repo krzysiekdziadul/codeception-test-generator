@@ -45,7 +45,7 @@ class TestCreateCommand extends Command implements CustomCommandInterface
      */
     public function getDescription()
     {
-        return "The command will create test base on postman collection";
+        return "Generates feature file base on postman collection";
     }
 
     /**

@@ -18,7 +18,7 @@ class CommandExecutor extends FrameworkPrepare
 
             $values[] = array_values($files);
 
-            echo PHP_EOL . "\e[4;31mFile AcceptanceTester.php will be overwritten.\e[0m\nSelect file or exit \n";
+            echo PHP_EOL . "\e[4;31m WARNING: File AcceptanceTester.php will be overwritten.\e[0m\nSelect file or exit \n";
 
             foreach ($values as $value) {
                 $filter = array_filter(array_merge(array(0), $value));
