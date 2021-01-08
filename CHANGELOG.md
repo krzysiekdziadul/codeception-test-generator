@@ -1,6 +1,9 @@
 ## CHANGELOG
 ## codeception-test-generator
 
+### 1.0.5
+- add validation feature step
+
 ### 1.0.4
 - bug fix - rename path argument to <value*>
 
