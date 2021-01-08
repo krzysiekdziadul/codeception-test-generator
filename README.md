@@ -172,7 +172,7 @@ You can also add response validation rules by [specifying postman collection exa
       ]
 }
 ```
-5. Name it eg ```validation 404``` and save
+Name it eg ```validation 404``` and save
 
 **Pay atention for naming conventionse**  
 Please make sure, use ```validation``` + empty space + ```code```.
@@ -225,7 +225,7 @@ Given the parameters "path_arg1:<api_version>| path_arg2:<api_name> | country:<c
 #### Sample valid collection object
 
 ```
-		{
+	{
           "name": "London weather",
           "request": {
             "method": "GET",
