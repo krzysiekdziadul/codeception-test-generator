@@ -13,7 +13,7 @@ Export Postman collection as 2.1.0 version.
 For create step with json schema matches, please add `Examples` in collection and fill witch response schema.[Example](#Sample-valid-collection-object)       
 **Use valid request url** 
 ```
-https://{{host}}/v1/weather/country/GB?city=London&date=23–03-2020&api_key={{api_key}}
+https://{{host}}/v1/weather/country/GB?city=London&date=23–03-2020&key={{key}}
 
 https://{{host}}/v1/weather/country/GB?city=London
 
@@ -83,7 +83,7 @@ modules:
 **create ```.env``` file, locate it in main project folder and setup credentials**
 ```
 HOST=https://example.com/
-KEY=SOME_KEY=1234567890
+KEY=API_KEY=1234567890
 ```
 ### 4. Run test generator
 

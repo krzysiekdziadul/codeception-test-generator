@@ -23,7 +23,7 @@ class TestCreateCommand extends Command implements CustomCommandInterface
      */
     public static function getCommandName()
     {
-        return "generate:feature";
+        return "generate:feature-test";
     }
 
     /**
@@ -45,7 +45,7 @@ class TestCreateCommand extends Command implements CustomCommandInterface
      */
     public function getDescription()
     {
-        return "The command create test's feature from postman collection";
+        return "The command will create test base on postman collection";
     }
 
     /**

@@ -26,7 +26,7 @@ class FeatureGenerator
 
     private function creator()
     {
-        $code        = '';
+        $code        = 200;
         $headerTable = '';
         $string      = '';
         $schema      = null;
@@ -48,7 +48,6 @@ class FeatureGenerator
 
                     $testName    = preg_replace('/(\W)+/', '-', str_replace(' ', '-', $items['name']));
                     $featureName = ucfirst($testName);
-                    $code        = $items['response'][0]['code'];
                     $headerKey   = $this->columnBy($items, 'key');
                     $headerValue = $this->columnBy($items, 'value');
                     $pos         = preg_match(self::$apiKeyXpath, $httpsUrl);
@@ -150,6 +149,8 @@ class FeatureGenerator
                     }
                     $this->saveFeature($testName, $string);
                     unset($parameters);
+                    array_splice($validateBody, 0);
+
                 } else {
                     $store[] = 'Incorrect request url - ' . $httpsUrl;
                     $this->logging($store);

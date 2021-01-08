@@ -134,13 +134,18 @@ trait Helper
             }
 
             foreach ($collection as $tableData) {
-                $tableExamples = "\t| " . $tableData . " |" . $this->implodeData('|',
-                        $headerValue) . " |" . PHP_EOL;
+                $tableExamples = "\t| " . $tableData . " |" . PHP_EOL;
+
+                if (!empty($headerValue)) {
+                    $tableExamples = "\t| " . $tableData . " |" . $this->implodeData('|',
+                            $headerValue) . " |" . PHP_EOL;
+                }
                 $validation    .= $tableExamples;
                 unset($collection);
             }
             unset($template["Feature:"]);
             unset($template[""]);
+            unset($template["As a consumer "]);
             unset($template["\tAnd the response matches"]);
             $template["\n  Scenario Outline:"]                = "{$featureName} - {$validationCode[$i]} validation.";
             $template["\tThen I see response status code is"] = "\"{$validationCode[$i]}\"";
@@ -149,7 +154,11 @@ trait Helper
                 $string .= "$key $val\n";
             }
 
-            $tableExamples = "\t| " . $queryParameters . " |" . $headerTable . " |" . PHP_EOL;
+            $tableExamples = "\t| " . $queryParameters . " |" . PHP_EOL;
+
+            if (!empty($headerTable)) {
+                $tableExamples = "\t| " . $queryParameters . " |" . $headerTable . " |" . PHP_EOL;
+            }
             $string        .= $tableExamples . $validation;
         }
 
