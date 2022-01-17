@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Module generate codeception tests base on postman collection.",
     "keywords": ["codeception", "testing", "test", "gherkin", "BDD", "acceptance testing", "feature", "generator"],
-    "homepage":"https://testcreator.net/",
+    "homepage":"https://test-generator-web.vercel.app",
     "license": "MIT",
     "authors": [
         {
